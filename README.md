@@ -3,9 +3,9 @@
 
 Mr Rat is riding his vespa through the alleyways of New York City. On his way home, he encounters endless spiders and slimeballs that try to veer him off his path. Keep Mr Rat on track as long as you can! And AVOID THE SPIDERS AND SLIMEBALLS!!!! (and make sure to pick up some snacks on the way:))
 
-![start screen sketch](./img/startscreen.jpg)
+![start screen sketch](./img/startscreen.png)
 
-![game sketch](./img/gamesketch.JPG)
+![game sketch](./img/gamescreen.png)
 
 ## MVP
 * Create and render a game screen using canvas
@@ -16,7 +16,7 @@ Mr Rat is riding his vespa through the alleyways of New York City. On his way ho
 * Render "pieces" of cheese that disappear when Mr Rat comes into contact with them
 * Restart when end of screen is reached and/or when collision with an obstacle occurs
 
-![instructions](./img/instructions.JPG)
+![instructions](./img/instructions.png)
 
 ## Stretch Goals
 * Add up cheese
