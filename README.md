@@ -9,7 +9,6 @@ Mr Rat is riding his vespa through the alleyways of New York City. On his way ho
 
 ## MVP
 * Create and render a game screen using canvas
-* Display a timer that tells the user how far they've gone
 * Display instructions on the web page for the duration of the game
 * Render Mr Rat to move freely on the game screen using the arrow pad and gravity
 * Render slimeballs that bounce and are obstacles for Mr Rat
@@ -21,6 +20,7 @@ Mr Rat is riding his vespa through the alleyways of New York City. On his way ho
 ## Stretch Goals
 * Render a second obstacle...spiders!
 * Add up cheese
+* Display a timer that tells the user how far they've gone
 * Screen scroll for longer game time
 * Ability for user to control speed
 * Random obstacle render every level
