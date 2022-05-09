@@ -18,7 +18,7 @@ canvas.setAttribute('width', getComputedStyle(canvas)['width'])
 const gravity = .5
 // controls creation of characters
 class Pawns {
-    constructor(x, y, color, width, height, velocity) {
+    constructor(x, y, color, width, height, type) {
         this.x = x
         this.y = y
         this.color = color
@@ -28,9 +28,10 @@ class Pawns {
             x: 0,
             y: 0
         }
-        // this.alive = true;
+        this.type = type
+        this.alive = true;
     }
-    // renders pawn on screen
+    // renders pawns on screen
     render() {
         ctx.fillStyle = this.color
         ctx.fillRect(this.x, this.y, this.width, this.height)
@@ -46,8 +47,10 @@ class Pawns {
         else this.velocity.y = 0
     }
 }
+// GAME OBJECTS
 // tester pawn
-const mrRat = new Pawns(5, 5, 'purple', 30, 30)
+const mrRat = new Pawns(5, 5, 'purple', 30, 30, 'player')
+// key press tracker for mrRat movements
 const keys = {
     right: {
         pressed: false
@@ -56,9 +59,18 @@ const keys = {
         pressed: false
     }
 }
+// slimeballs
+const slimeballOne = new Pawns(200, 5, 'limegreen', 30, 30, 'slimeball')
+const slimeballTwo = new Pawns(300, 5, 'limegreen', 30, 30, 'slimeball')
+const slimeballThree = new Pawns(400, 5, 'limegreen', 30, 30, 'slimeball')
+const slimeballFour = new Pawns(500, 5, 'limegreen', 30, 30, 'slimeball')
+const slimeballFive = new Pawns(600, 5, 'limegreen', 30, 30, 'slimeball')
+const slimeballSix = new Pawns(700, 5, 'limegreen', 30, 30, 'slimeball')
+const slimeballs = (Pawns.type === 'slimeball')
+console.log(slimeballs)
+
 // me.update()
 // console.log(me)
-// GAME OBJECTS
 
 // GAME FUNCTIONS
 // draws the pawns
@@ -71,6 +83,19 @@ function animate() {
     requestAnimationFrame(animate)
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     mrRat.update()
+    hitDetect(slimeballOne, mrRat)
+    hitDetect(slimeballTwo, mrRat)
+    hitDetect(slimeballThree, mrRat)
+    hitDetect(slimeballFour, mrRat)
+    hitDetect(slimeballFive, mrRat)
+    hitDetect(slimeballSix, mrRat)
+    // slimeballs.update()
+    slimeballOne.update()
+    slimeballTwo.update()
+    slimeballThree.update()
+    slimeballFour.update()
+    slimeballFive.update()
+    slimeballSix.update()
 // if statement for rat movement
     if (keys.right.pressed) {
         mrRat.velocity.x = 1
@@ -98,7 +123,7 @@ addEventListener('keydown', ({key}) => {
 
         case('ArrowUp'):
             // console.log('up')
-            mrRat.velocity.y -= 11
+            mrRat.velocity.y -= 5
             break
         
         case('ArrowDown'):
@@ -125,7 +150,7 @@ addEventListener('keyup', ({key}) => {
 
         case('ArrowUp'):
             // console.log('up')
-            mrRat.velocity.y -= 11
+            mrRat.velocity.y -= 5
             break
         
         // case('ArrowDown'):
@@ -134,3 +159,19 @@ addEventListener('keyup', ({key}) => {
     }
     // console.log(keys.right.pressed)
 })
+
+function hitDetect(slimeball, player) {
+    if (
+        // left
+        player.x + player.width >= slimeball.x &&
+        // right
+        player.x <= slimeball.x + slimeball.width &&
+        // top
+        player.y + player.height >= slimeball.y &&
+        // bottom
+        player.y <= slimeball.y + slimeball.height
+    ) {
+        mrRat.alive = false
+        console.log('hit detected')
+    }
+}
