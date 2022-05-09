@@ -30,13 +30,17 @@ class Pawns {
         }
         // this.alive = true;
     }
+    // renders pawn on screen
     render() {
         ctx.fillStyle = this.color
         ctx.fillRect(this.x, this.y, this.width, this.height)
     }
+    // this updates the position as the player is drawn
     update() {
         this.render()
+        this.x += this.velocity.x
         this.y += this.velocity.y
+
         if(this.y + this.height + this.velocity.y <= canvas.height)
         this.velocity.y += gravity
         else this.velocity.y = 0
@@ -44,6 +48,14 @@ class Pawns {
 }
 // tester pawn
 const mrRat = new Pawns(5, 5, 'purple', 30, 30)
+const keys = {
+    right: {
+        pressed: false
+    },
+    left: {
+        pressed: false
+    }
+}
 // me.update()
 // console.log(me)
 // GAME OBJECTS
@@ -59,6 +71,66 @@ function animate() {
     requestAnimationFrame(animate)
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     mrRat.update()
+// if statement for rat movement
+    if (keys.right.pressed) {
+        mrRat.velocity.x = 1
+    } else if (keys.left.pressed) {
+        mrRat.velocity.x = -1
+    } else mrRat.velocity.x = 0
 }
 animate()
 // EVENT LISTENERS
+// handles movement
+// switch statement event listener for key down events
+addEventListener('keydown', ({key}) => {
+    switch (key) {
+        case('ArrowRight'):
+            // console.log('right')
+            // mrRat.velocity.x += 1
+            keys.right.pressed = true
+            break
+        
+        case('ArrowLeft'):
+            // console.log('left')
+            // mrRat.velocity.x -= 1
+            keys.left.pressed = true
+            break
+
+        case('ArrowUp'):
+            // console.log('up')
+            mrRat.velocity.y -= 11
+            break
+        
+        case('ArrowDown'):
+            // console.log('down')
+            mrRat.velocity.y = 0
+            break
+    }
+    // console.log(keys.right.pressed)
+})
+// switch statement event listener for key up events for smooth movement across keyboard settings
+addEventListener('keyup', ({key}) => {
+    switch (key) {
+        case('ArrowRight'):
+            // console.log('right')
+            // mrRat.velocity.x = 0
+            keys.right.pressed = false
+            break
+        
+        case('ArrowLeft'):
+            // console.log('left')
+            // mrRat.velocity.x = 0
+            keys.left.pressed = false
+            break
+
+        case('ArrowUp'):
+            // console.log('up')
+            mrRat.velocity.y -= 11
+            break
+        
+        // case('ArrowDown'):
+        //     // console.log('down')
+        //     break
+    }
+    // console.log(keys.right.pressed)
+})
