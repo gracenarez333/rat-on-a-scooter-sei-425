@@ -26,10 +26,8 @@ class Pawns {
 
     render() {
         ctx.fillStyle = this.color
-        ctx.fillRect = (this.x, this.y, this.width, this.height)
+        ctx.fillRect(this.x, this.y, this.width, this.height)
     }
-
-    draw()
 }
 // tester pawn
 const me = new Pawns(5, 5, 'blue', 30, 30)
