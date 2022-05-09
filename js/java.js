@@ -21,25 +21,27 @@ class Pawns {
         this.color = color
         this.width = width
         this.height = height
-        this.alive = true;
+        // this.alive = true;
     }
 
     render() {
         ctx.fillStyle = this.color
         ctx.fillRect = (this.x, this.y, this.width, this.height)
     }
+
+    draw()
 }
 // tester pawn
-// const me = new Pawns(5, 5, 'blue', 100, 310)
-// me.render()
-// console.log(me)
+const me = new Pawns(5, 5, 'blue', 30, 30)
+me.render()
+console.log(me)
 // GAME OBJECTS
 
 // GAME FUNCTIONS
 
-// function drawBox(x, y, width, height, color) {
-//     ctx.fillStyle = color
-//     ctx.fillRect(x, y, width, height)
-// }
+function draw(x, y, width, height, color) {
+    ctx.fillStyle = color
+    ctx.fillRect(x, y, width, height)
+}
 
 // EVENT LISTENERS
