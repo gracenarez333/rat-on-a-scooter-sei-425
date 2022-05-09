@@ -14,6 +14,8 @@ canvas.setAttribute('width', getComputedStyle(canvas)['width'])
 // console.log(canvas.height)
 // console.log(canvas.width)
 // CLASSES
+// controls gravity of all pawns
+const gravity = .5
 // controls creation of characters
 class Pawns {
     constructor(x, y, color, width, height, velocity) {
@@ -24,7 +26,7 @@ class Pawns {
         this.height = height
         this.velocity = {
             x: 0,
-            y: 20
+            y: 0
         }
         // this.alive = true;
     }
@@ -33,8 +35,11 @@ class Pawns {
         ctx.fillRect(this.x, this.y, this.width, this.height)
     }
     update() {
-        this.y += this.velocity.y
         this.render()
+        this.y += this.velocity.y
+        if(this.y + this.height + this.velocity.y <= canvas.height)
+        this.velocity.y += gravity
+        else this.velocity.y = 0
     }
 }
 // tester pawn
@@ -52,6 +57,7 @@ function draw(x, y, width, height, color) {
 // animates/updates screen for animation
 function animate() {
     requestAnimationFrame(animate)
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
     mrRat.update()
 }
 animate()
