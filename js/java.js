@@ -1,15 +1,16 @@
 // DOM SELECTORS
 // canvas element
 const canvas = document.querySelector('#canvas')
-// cheese counter
+// status display
+const statusDisplay = document.querySelector('#status')
 
 // CANVAS SETUP / GAME STATE
 // set the rendering context of the canvas
 const ctx = canvas.getContext('2d')
 
 // set canvas width and height
-canvas.setAttribute('height', getComputedStyle(canvas)['height'])
-canvas.setAttribute('width', getComputedStyle(canvas)['width'])
+canvas.width = 800
+canvas.height = 400
 // console.log(canvas)
 // console.log(canvas.height)
 // console.log(canvas.width)
@@ -30,6 +31,7 @@ class Pawns {
         }
         this.type = type
         this.alive = true;
+        // this.bounce = bounce;
     }
     // renders pawns on screen
     render() {
@@ -98,7 +100,7 @@ function animate() {
     slimeballFive.update()
     slimeballSix.update()
 // if statement for rat movement
-    if (keys.right.pressed && mrRat.x < 770) {
+    if (keys.right.pressed && mrRat.x < 798) {
         mrRat.velocity.x = 2
     } else if (keys.left.pressed && mrRat.x > 30) {
         mrRat.velocity.x = -2
@@ -160,6 +162,10 @@ addEventListener('keyup', ({key}) => {
     }
     // console.log(keys.right.pressed)
 })
+// function for bouncing slimeballs
+// function slimeBounce() {
+
+// }
 // hit detection function for all slimeballs against mr Rat
 function hitDetect(slimeball, player) {
     if (
@@ -178,9 +184,15 @@ function hitDetect(slimeball, player) {
 }
 // win detect function 
 function winDetect() {
-    if (mrRat.alive === true && mrRat.x >= 770) {
-        console.log('you win')
-    } else if (mrRat.alive === false && mrRat.x < 770) {
-        console.log('you lose')
+    if (mrRat.x >= 798) {
+        // console.log('you win')
+        statusDisplay.innerText = 'you win!'
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        // animate()
+    } else if (mrRat.alive === false && mrRat.x < 800) {
+        // console.log('you lose')
+        statusDisplay.innerText = 'you lose!'
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        // animate()
     }
 }
