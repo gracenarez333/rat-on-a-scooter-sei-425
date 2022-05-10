@@ -67,7 +67,7 @@ const slimeballFour = new Pawns(500, 5, 'limegreen', 30, 30, 'slimeball')
 const slimeballFive = new Pawns(600, 5, 'limegreen', 30, 30, 'slimeball')
 const slimeballSix = new Pawns(700, 5, 'limegreen', 30, 30, 'slimeball')
 const slimeballs = (Pawns.type === 'slimeball')
-console.log(slimeballs)
+// console.log(slimeballs)
 
 // me.update()
 // console.log(me)
