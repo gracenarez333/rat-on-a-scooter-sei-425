@@ -49,7 +49,7 @@ class Pawns {
 }
 // GAME OBJECTS
 // tester pawn
-const mrRat = new Pawns(5, 5, 'purple', 30, 30, 'player')
+const mrRat = new Pawns(30, 5, 'purple', 30, 30, 'player')
 // key press tracker for mrRat movements
 const keys = {
     right: {
@@ -83,6 +83,7 @@ function animate() {
     requestAnimationFrame(animate)
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     mrRat.update()
+    winDetect()
     hitDetect(slimeballOne, mrRat)
     hitDetect(slimeballTwo, mrRat)
     hitDetect(slimeballThree, mrRat)
@@ -97,10 +98,10 @@ function animate() {
     slimeballFive.update()
     slimeballSix.update()
 // if statement for rat movement
-    if (keys.right.pressed) {
-        mrRat.velocity.x = 1
-    } else if (keys.left.pressed) {
-        mrRat.velocity.x = -1
+    if (keys.right.pressed && mrRat.x < 770) {
+        mrRat.velocity.x = 2
+    } else if (keys.left.pressed && mrRat.x > 30) {
+        mrRat.velocity.x = -2
     } else mrRat.velocity.x = 0
 }
 animate()
@@ -159,7 +160,7 @@ addEventListener('keyup', ({key}) => {
     }
     // console.log(keys.right.pressed)
 })
-
+// hit detection function for all slimeballs against mr Rat
 function hitDetect(slimeball, player) {
     if (
         // left
@@ -173,5 +174,13 @@ function hitDetect(slimeball, player) {
     ) {
         mrRat.alive = false
         console.log('hit detected')
+    }
+}
+// win detect function 
+function winDetect() {
+    if (mrRat.alive === true && mrRat.x >= 770) {
+        console.log('you win')
+    } else if (mrRat.alive === false && mrRat.x < 770) {
+        console.log('you lose')
     }
 }
