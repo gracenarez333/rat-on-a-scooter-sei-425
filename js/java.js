@@ -1,3 +1,6 @@
+// SPRITE IMPORTS
+// import mrrat from '../img/mrrat.png' 
+// import slimey from '../img/slimey.png'
 // DOM SELECTORS
 // canvas element
 const canvas = document.querySelector('#canvas')
@@ -19,8 +22,12 @@ canvas.height = 400
 const gravity = .5
 // const bounce = 1
 // controls creation of characters
+const ratImage = new Image()
+ratImage.src = './img/mrrat.png'
+const slimeImage = new Image()
+slimeImage.src = './img/slimey.png'
 class Pawns {
-    constructor(x, y, color, width, height, type) {
+    constructor(x, y, color, width, height, type, image) {
         this.x = x
         this.y = y
         this.color = color
@@ -32,12 +39,14 @@ class Pawns {
         }
         this.type = type
         this.alive = true
-        this.bounce = Math.random();
+        this.bounce = Math.random()
+        this.image = image
     }
     // renders pawns on screen
     render() {
-        ctx.fillStyle = this.color
-        ctx.fillRect(this.x, this.y, this.width, this.height)
+        // ctx.fillStyle = this.color
+        // ctx.fillRect(this.x, this.y, this.width, this.height)
+        ctx.drawImage(this.image, this.x, this.y, this.width, this.height)
     }
     // this updates the position as the player is drawn
     update() {
@@ -64,7 +73,7 @@ class Pawns {
 }
 // GAME OBJECTS
 // tester pawn
-const mrRat = new Pawns(30, 5, 'purple', 30, 30, 'player')
+const mrRat = new Pawns(30, 5, 'purple', 50, 50, 'player', ratImage)
 // key press tracker for mrRat movements
 const keys = {
     right: {
@@ -75,12 +84,12 @@ const keys = {
     }
 }
 // slimeballs
-const slimeballOne = new Pawns(200, 5, 'limegreen', 30, 30, 'slimeball')
-const slimeballTwo = new Pawns(300, 5, 'limegreen', 30, 30, 'slimeball')
-const slimeballThree = new Pawns(400, 5, 'limegreen', 30, 30, 'slimeball')
-const slimeballFour = new Pawns(500, 5, 'limegreen', 30, 30, 'slimeball')
-const slimeballFive = new Pawns(600, 5, 'limegreen', 30, 30, 'slimeball')
-const slimeballSix = new Pawns(700, 5, 'limegreen', 30, 30, 'slimeball')
+const slimeballOne = new Pawns(200, 5, 'limegreen', 50, 50, 'slimeball', slimeImage)
+const slimeballTwo = new Pawns(300, 5, 'limegreen', 50, 50, 'slimeball', slimeImage)
+const slimeballThree = new Pawns(400, 5, 'limegreen', 50, 50, 'slimeball', slimeImage)
+const slimeballFour = new Pawns(500, 5, 'limegreen', 50, 50, 'slimeball', slimeImage)
+const slimeballFive = new Pawns(600, 5, 'limegreen', 50, 50, 'slimeball', slimeImage)
+const slimeballSix = new Pawns(700, 5, 'limegreen', 50, 50, 'slimeball', slimeImage)
 const slimeballs = (Pawns.type === 'slimeball')
 // console.log(slimeballs)
 
