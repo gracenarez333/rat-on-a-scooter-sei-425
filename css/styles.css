@@ -6,7 +6,7 @@ html,body {
   body {
     padding-top: 1em;
     text-align: center;
-    background:rgb(105, 94, 94) url("../img/newyorkbackground.webp") repeat;
+    background:rgb(105, 94, 94) url("../img/newyorkbackground.webp") no-repeat;
     background-size: cover;
     background-repeat: space;
   }

@@ -17,7 +17,7 @@ canvas.height = 400
 // CLASSES
 // controls gravity of all pawns
 const gravity = .5
-const bounce = 1
+// const bounce = 1
 // controls creation of characters
 class Pawns {
     constructor(x, y, color, width, height, type) {
@@ -32,7 +32,7 @@ class Pawns {
         }
         this.type = type
         this.alive = true
-        this.bounce = bounce;
+        this.bounce = Math.random();
     }
     // renders pawns on screen
     render() {
@@ -55,9 +55,11 @@ class Pawns {
         this.x += this.velocity.x
         this.y += this.velocity.y
 
-        if(this.y + this.height + this.velocity.y <= canvas.height){
-        this.velocity.y += bounce
-    } else this.bounce = 1
+        if(this.y + this.height + this.velocity.y >= canvas.height){
+        this.velocity.y = -this.velocity.y
+        // this.bounce = -this.bounce
+        }
+    // } else this.bounce = 1
 }
 }
 // GAME OBJECTS
@@ -97,12 +99,20 @@ function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     mrRat.update()
     winDetect()
+    // hit detection for each slimeball
     hitDetect(slimeballOne, mrRat)
     hitDetect(slimeballTwo, mrRat)
     hitDetect(slimeballThree, mrRat)
     hitDetect(slimeballFour, mrRat)
     hitDetect(slimeballFive, mrRat)
     hitDetect(slimeballSix, mrRat)
+    // slimeball bounce
+    slimeballOne.slimeBounce()
+    slimeballTwo.slimeBounce()
+    slimeballThree.slimeBounce()
+    slimeballFour.slimeBounce()
+    slimeballFive.slimeBounce()
+    slimeballSix.slimeBounce()
     // slimeballs.update()
     slimeballOne.update()
     slimeballTwo.update()
@@ -111,7 +121,7 @@ function animate() {
     slimeballFive.update()
     slimeballSix.update()
 // if statement for rat movement
-    if (keys.right.pressed && mrRat.x < 798) {
+    if (keys.right.pressed && mrRat.x < 800) {
         mrRat.velocity.x = 2
     } else if (keys.left.pressed && mrRat.x > 30) {
         mrRat.velocity.x = -2
@@ -193,15 +203,15 @@ function hitDetect(slimeball, player) {
 }
 // win detect function 
 function winDetect() {
-    if (mrRat.x >= 798) {
+    if (mrRat.alive === true && mrRat.x >= 800) {
         // console.log('you win')
-        statusDisplay.innerText = 'you win!'
         ctx.clearRect(0, 0, canvas.width, canvas.height)
+        statusDisplay.innerText = 'you win!'
         // animate()
     } else if (mrRat.alive === false && mrRat.x < 800) {
         // console.log('you lose')
-        statusDisplay.innerText = 'you lose!'
         ctx.clearRect(0, 0, canvas.width, canvas.height)
+        statusDisplay.innerText = 'you lose!'
         // animate()
-    }
+    } 
 }
