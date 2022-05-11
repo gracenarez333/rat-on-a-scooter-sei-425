@@ -17,6 +17,7 @@ canvas.height = 400
 // CLASSES
 // controls gravity of all pawns
 const gravity = .5
+const bounce = 1
 // controls creation of characters
 class Pawns {
     constructor(x, y, color, width, height, type) {
@@ -30,8 +31,8 @@ class Pawns {
             y: 0
         }
         this.type = type
-        this.alive = true;
-        // this.bounce = bounce;
+        this.alive = true
+        this.bounce = bounce;
     }
     // renders pawns on screen
     render() {
@@ -48,6 +49,16 @@ class Pawns {
         this.velocity.y += gravity
         else this.velocity.y = 0
     }
+
+    slimeBounce() {
+        this.render()
+        this.x += this.velocity.x
+        this.y += this.velocity.y
+
+        if(this.y + this.height + this.velocity.y <= canvas.height){
+        this.velocity.y += bounce
+    } else this.bounce = 1
+}
 }
 // GAME OBJECTS
 // tester pawn
@@ -162,10 +173,8 @@ addEventListener('keyup', ({key}) => {
     }
     // console.log(keys.right.pressed)
 })
-// function for bouncing slimeballs
-// function slimeBounce() {
 
-// }
+
 // hit detection function for all slimeballs against mr Rat
 function hitDetect(slimeball, player) {
     if (
@@ -179,7 +188,7 @@ function hitDetect(slimeball, player) {
         player.y <= slimeball.y + slimeball.height
     ) {
         mrRat.alive = false
-        console.log('hit detected')
+        // console.log('hit detected')
     }
 }
 // win detect function 
