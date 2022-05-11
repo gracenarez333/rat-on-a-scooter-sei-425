@@ -19,7 +19,7 @@ canvas.height = 400
 // console.log(canvas.width)
 // CLASSES
 // controls gravity of all pawns
-const gravity = .5
+const gravity = .4
 // const bounce = 1
 // controls creation of characters
 const ratImage = new Image()
@@ -73,7 +73,7 @@ class Pawns {
 }
 // GAME OBJECTS
 // tester pawn
-const mrRat = new Pawns(30, 5, 'purple', 50, 50, 'player', ratImage)
+const mrRat = new Pawns(30, 5, 'purple', 50, 60, 'player', ratImage)
 // key press tracker for mrRat movements
 const keys = {
     right: {
@@ -84,12 +84,12 @@ const keys = {
     }
 }
 // slimeballs
-const slimeballOne = new Pawns(200, 5, 'limegreen', 50, 50, 'slimeball', slimeImage)
-const slimeballTwo = new Pawns(300, 5, 'limegreen', 50, 50, 'slimeball', slimeImage)
-const slimeballThree = new Pawns(400, 5, 'limegreen', 50, 50, 'slimeball', slimeImage)
-const slimeballFour = new Pawns(500, 5, 'limegreen', 50, 50, 'slimeball', slimeImage)
-const slimeballFive = new Pawns(600, 5, 'limegreen', 50, 50, 'slimeball', slimeImage)
-const slimeballSix = new Pawns(700, 5, 'limegreen', 50, 50, 'slimeball', slimeImage)
+const slimeballOne = new Pawns(180, 5, 'limegreen', 40, 50, 'slimeball', slimeImage)
+const slimeballTwo = new Pawns(350, 5, 'limegreen', 40, 50, 'slimeball', slimeImage)
+const slimeballThree = new Pawns(500, 5, 'limegreen', 40, 50, 'slimeball', slimeImage)
+const slimeballFour = new Pawns(650, 5, 'limegreen', 40, 50, 'slimeball', slimeImage)
+// const slimeballFive = new Pawns(750, 5, 'limegreen', 50, 50, 'slimeball', slimeImage)
+// const slimeballSix = new Pawns(700, 5, 'limegreen', 50, 50, 'slimeball', slimeImage)
 const slimeballs = (Pawns.type === 'slimeball')
 // console.log(slimeballs)
 
@@ -113,27 +113,27 @@ function animate() {
     hitDetect(slimeballTwo, mrRat)
     hitDetect(slimeballThree, mrRat)
     hitDetect(slimeballFour, mrRat)
-    hitDetect(slimeballFive, mrRat)
-    hitDetect(slimeballSix, mrRat)
+    // hitDetect(slimeballFive, mrRat)
+    // hitDetect(slimeballSix, mrRat)
     // slimeball bounce
     slimeballOne.slimeBounce()
     slimeballTwo.slimeBounce()
     slimeballThree.slimeBounce()
     slimeballFour.slimeBounce()
-    slimeballFive.slimeBounce()
-    slimeballSix.slimeBounce()
+    // slimeballFive.slimeBounce()
+    // slimeballSix.slimeBounce()
     // slimeballs.update()
     slimeballOne.update()
     slimeballTwo.update()
     slimeballThree.update()
     slimeballFour.update()
-    slimeballFive.update()
-    slimeballSix.update()
+    // slimeballFive.update()
+    // slimeballSix.update()
 // if statement for rat movement
     if (keys.right.pressed && mrRat.x < 800) {
-        mrRat.velocity.x = 2
+        mrRat.velocity.x = 2.3
     } else if (keys.left.pressed && mrRat.x > 30) {
-        mrRat.velocity.x = -2
+        mrRat.velocity.x = -2.3
     } else mrRat.velocity.x = 0
 }
 animate()

@@ -12,13 +12,13 @@ Mr Rat is riding his vespa through the alleyways of New York City. On his way ho
 * Display instructions on the web page for the duration of the game
 * Render Mr Rat to move freely on the game screen using the arrow pad and gravity
 * Render slimeballs that bounce and are obstacles for Mr Rat
-* Render "pieces" of cheese that disappear when Mr Rat comes into contact with them
 * Restart when end of screen is reached and/or when collision with an obstacle occurs
 
 ![instructions](./img/instructions.png)
 
 ## Stretch Goals
 * Render a second obstacle...spiders!
+* Render "pieces" of cheese that disappear when Mr Rat comes into contact with them
 * Add up cheese
 * Display a timer that tells the user how far they've gone
 * Screen scroll for longer game time
