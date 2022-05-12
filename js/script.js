@@ -6,7 +6,10 @@
 const canvas = document.querySelector('#canvas')
 // status display
 const statusDisplay = document.querySelector('#status')
+// replay button
 const replayBtn = document.querySelector('#replayButton')
+// start button
+const startBtn = document.querySelector('#startButton')
 
 // CANVAS SETUP / GAME STATE
 // set the rendering context of the canvas
@@ -23,6 +26,7 @@ let gameOverStatus = false
 
 const gameStatusTextElement = document.querySelector('[data-game-over-text]')
 const gameStatusElement = document.getElementById('gameOver')
+const startGameElement = document.getElementById('gameStart')
 // controls gravity of all pawns
 const gravity = .4
 // const bounce = 1
@@ -237,6 +241,15 @@ function winDetect() {
         // animate()
     } 
 }
+
+startBtn.addEventListener('click', function(){
+    go()
+})
+
+function go() {
+    startGameElement.classList.add('hidden')
+}
+
 replayBtn.addEventListener('click', function(){
     refresh()
 })
