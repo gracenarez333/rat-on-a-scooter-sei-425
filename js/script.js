@@ -6,6 +6,7 @@
 const canvas = document.querySelector('#canvas')
 // status display
 const statusDisplay = document.querySelector('#status')
+const replayBtn = document.querySelector('#replayButton')
 
 // CANVAS SETUP / GAME STATE
 // set the rendering context of the canvas
@@ -77,7 +78,7 @@ class Pawns {
 }
 // GAME OBJECTS
 // tester pawn
-const mrRat = new Pawns(30, 5, 'purple', 50, 60, 'player', ratImage)
+let mrRat = new Pawns(30, 5, 'purple', 50, 60, 'player', ratImage)
 // key press tracker for mrRat movements
 const keys = {
     right: {
@@ -88,10 +89,10 @@ const keys = {
     }
 }
 // slimeballs
-const slimeballOne = new Pawns(180, 5, 'limegreen', 40, 50, 'slimeball', slimeImage)
-const slimeballTwo = new Pawns(350, 5, 'limegreen', 40, 50, 'slimeball', slimeImage)
-const slimeballThree = new Pawns(500, 5, 'limegreen', 40, 50, 'slimeball', slimeImage)
-const slimeballFour = new Pawns(650, 5, 'limegreen', 40, 50, 'slimeball', slimeImage)
+let slimeballOne = new Pawns(180, 5, 'limegreen', 40, 50, 'slimeball', slimeImage)
+let slimeballTwo = new Pawns(350, 5, 'limegreen', 40, 50, 'slimeball', slimeImage)
+let slimeballThree = new Pawns(500, 5, 'limegreen', 40, 50, 'slimeball', slimeImage)
+let slimeballFour = new Pawns(650, 5, 'limegreen', 40, 50, 'slimeball', slimeImage)
 // const slimeballFive = new Pawns(750, 5, 'limegreen', 50, 50, 'slimeball', slimeImage)
 // const slimeballSix = new Pawns(700, 5, 'limegreen', 50, 50, 'slimeball', slimeImage)
 const slimeballs = (Pawns.type === 'slimeball')
@@ -235,4 +236,19 @@ function winDetect() {
         gameStatusElement.classList.add('show')
         // animate()
     } 
+}
+replayBtn.addEventListener('click', function(){
+    refresh()
+})
+
+function refresh() {
+    gameOverStatus = false
+    mrRat = new Pawns(30, 5, 'purple', 50, 60, 'player', ratImage)
+    slimeballOne = new Pawns(180, 5, 'limegreen', 40, 50, 'slimeball', slimeImage)
+    slimeballTwo = new Pawns(350, 5, 'limegreen', 40, 50, 'slimeball', slimeImage)
+    slimeballThree = new Pawns(500, 5, 'limegreen', 40, 50, 'slimeball', slimeImage)
+    slimeballFour = new Pawns(650, 5, 'limegreen', 40, 50, 'slimeball', slimeImage)
+    gameStatusElement.classList.remove('show')
+    animate()
+    console.log('smd again')
 }
