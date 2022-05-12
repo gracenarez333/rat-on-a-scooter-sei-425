@@ -24,6 +24,7 @@ html,body {
   }
   
   #container {
+  position: relative;
   width: 832px;
   height: 588px;
   max-width: 50em;
@@ -38,7 +39,35 @@ html,body {
                         "game game game"
                         "btm-left btm-right btm-right";
   }
+
+  .gameover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(176, 53, 53, 0.9);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-family: 'Press Start 2P', monospace;
+  }
+
+  .replay {
+    background-color: rgb(75, 20, 71);
+    font-size: 2.5rem;
+    font-family: 'Press Start 2P', monospace;
+    border: 3px solid black;
+    padding: .5em;
+    cursor: pointer;
+  }
   
+  .gameover.show {
+    display: flex;
+  }
+
   #top-left, #top-right, #btm-left, #btm-right {
     display: flex;
     justify-content: center;

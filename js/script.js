@@ -18,6 +18,10 @@ canvas.height = 400
 // console.log(canvas.height)
 // console.log(canvas.width)
 // CLASSES
+let gameOverStatus = false
+
+const gameStatusTextElement = document.querySelector('[data-game-over-text]')
+const gameStatusElement = document.getElementById('gameOver')
 // controls gravity of all pawns
 const gravity = .4
 // const bounce = 1
@@ -104,6 +108,10 @@ function draw(x, y, width, height, color) {
 }
 // animates/updates screen for animation
 function animate() {
+    if (gameOverStatus) {
+        console.log('smd'); 
+        return;
+    }
     requestAnimationFrame(animate)
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     mrRat.update()
@@ -214,13 +222,17 @@ function hitDetect(slimeball, player) {
 function winDetect() {
     if (mrRat.alive === true && mrRat.x >= 800) {
         // console.log('you win')
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
-        statusDisplay.innerText = 'you win!'
+        // ctx.clearRect(0, 0, canvas.width, canvas.height)
+        gameOverStatus = true
+        gameStatusTextElement.innerText = 'you win!'
+        gameStatusElement.classList.add('show')
         // animate()
     } else if (mrRat.alive === false && mrRat.x < 800) {
         // console.log('you lose')
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
-        statusDisplay.innerText = 'you lose!'
+        // ctx.clearRect(0, 0, canvas.width, canvas.height)
+        gameOverStatus = true
+        gameStatusTextElement.innerText = 'you lose!'
+        gameStatusElement.classList.add('show')
         // animate()
     } 
 }
