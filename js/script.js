@@ -110,7 +110,7 @@ function draw(x, y, width, height, color) {
 // animates/updates screen for animation
 function animate() {
     if (gameOverStatus) {
-        console.log('smd'); 
+        // console.log('smd'); 
         return;
     }
     requestAnimationFrame(animate)
@@ -140,9 +140,9 @@ function animate() {
     // slimeballSix.update()
 // if statement for rat movement
     if (keys.right.pressed && mrRat.x < 800) {
-        mrRat.velocity.x = 2.3
+        mrRat.velocity.x = 2.7
     } else if (keys.left.pressed && mrRat.x > 30) {
-        mrRat.velocity.x = -2.3
+        mrRat.velocity.x = -2.7
     } else mrRat.velocity.x = 0
 }
 animate()
@@ -206,13 +206,13 @@ addEventListener('keyup', ({key}) => {
 // hit detection function for all slimeballs against mr Rat
 function hitDetect(slimeball, player) {
     if (
-        // left
-        player.x + player.width >= slimeball.x &&
         // right
+        player.x + player.width >= slimeball.x &&
+        // left
         player.x <= slimeball.x + slimeball.width &&
-        // top
-        player.y + player.height >= slimeball.y &&
         // bottom
+        player.y + player.height >= slimeball.y &&
+        // top
         player.y <= slimeball.y + slimeball.height
     ) {
         mrRat.alive = false
@@ -250,5 +250,5 @@ function refresh() {
     slimeballFour = new Pawns(650, 5, 'limegreen', 40, 50, 'slimeball', slimeImage)
     gameStatusElement.classList.remove('show')
     animate()
-    console.log('smd again')
+    // console.log('smd again')
 }
