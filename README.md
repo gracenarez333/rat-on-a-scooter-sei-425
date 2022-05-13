@@ -4,7 +4,7 @@
 Mr Rat is riding his vespa through the alleyways of New York City. On his way home, he encounters endless spiders and slimeballs that try to veer him off his path. Keep Mr Rat on track as long as you can! And AVOID THE SPIDERS AND SLIMEBALLS!!!! (and make sure to pick up some snacks on the way:))
 
 ## Play the Game!
-[RatOnAScooter game link](https://gracenarez333.github.io/rat-on-a-scooter-sei-425/)
+[Rat On A Scooter game link](https://gracenarez333.github.io/rat-on-a-scooter-sei-425/)
 
 ## Approach
 I started by setting up my html and most but not all of the simpler css styling. I then used my prior knowledge to create a basic 'canvas crawler' -like game, and from there I began slowly implementing functions to transform the game into the vision I had using old and new skills after researching them.
