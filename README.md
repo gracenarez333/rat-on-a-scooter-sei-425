@@ -43,9 +43,9 @@ I am proud of myself for staying so positive and confident throughout the week. 
 * 'Levels'
 
 ## Sources
-used for research on start and end game screens
-[ScreenHowTo game link](https://www.youtube.com/watch?v=Y-GkMjUZsmM)
-used for movement and more advanced canvas ideas
-[MarioHowTo game link](https://www.youtube.com/watch?v=4q2vvZn5aoo)
-used for sounds
-[sound link](https://mixkit.co/free-sound-effects/game/)
+* used for research on start and end game screens
+[Screen How To game link](https://www.youtube.com/watch?v=Y-GkMjUZsmM)
+* used for movement and more advanced canvas ideas
+[Mario How To game link](https://www.youtube.com/watch?v=4q2vvZn5aoo)
+* used for sounds
+[Sound link](https://mixkit.co/free-sound-effects/game/)
