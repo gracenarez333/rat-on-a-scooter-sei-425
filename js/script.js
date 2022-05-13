@@ -21,6 +21,16 @@ canvas.height = 400
 
 // CLASSES
 
+// audios
+const click = new Audio('./audio/click.mp3')
+click.volume = .4
+const jump = new Audio('./audio/jump.mp3')
+jump.volume = .4
+const winner = new Audio('./audio/win.mp3')
+winner.volume = .4
+const loser = new Audio('./audio/loser.mp3')
+loser.volume = .4
+
 let gameStartStatus = false
 let gameOverStatus = false
 
@@ -159,6 +169,7 @@ addEventListener('keydown', ({key}) => {
 
         case('ArrowUp'):
             mrRat.velocity.y -= 5
+            jump.play()
             break
         
         case('ArrowDown'):
@@ -207,16 +218,19 @@ function winDetect() {
         gameOverStatus = true
         gameStatusTextElement.innerText = 'you win!'
         gameStatusElement.classList.add('show')
+        winner.play()
     } else if (mrRat.alive === false && mrRat.x < 800) {
         gameOverStatus = true
         gameStatusTextElement.innerText = 'you lose!'
         gameStatusElement.classList.add('show')
+        loser.play()
     } 
 }
 
 // start button event listener
 startBtn.addEventListener('click', function(){
     go()
+    click.play()
 })
 // go function to start rendering when start is clicked
 function go() {
@@ -226,6 +240,7 @@ function go() {
 // replay button event listener
 replayBtn.addEventListener('click', function(){
     refresh()
+    click.play()
 })
 // refresh function to clear game and re-render
 function refresh() {
