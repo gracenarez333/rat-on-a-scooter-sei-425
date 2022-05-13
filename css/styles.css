@@ -122,4 +122,5 @@ html,body {
   
   #btm-right {
     grid-area: btm-right;
+    font-size: .7rem;
   }
