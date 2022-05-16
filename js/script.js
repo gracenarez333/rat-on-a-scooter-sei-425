@@ -47,6 +47,8 @@ const ratImage = new Image()
 ratImage.src = './img/mrrat.png'
 const slimeImage = new Image()
 slimeImage.src = './img/slimey.png'
+const cheeseImage = new Image()
+cheeseImage.src = './img/cheese.png'
 class Pawns {
     constructor(x, y, color, width, height, type, image) {
         this.x = x
@@ -108,6 +110,11 @@ let slimeballFour = new Pawns(650, -10, 'limegreen', 40, 50, 'slimeball', slimeI
 // const slimeballFive = new Pawns(750, 5, 'limegreen', 50, 50, 'slimeball', slimeImage)
 // const slimeballSix = new Pawns(700, -10, 'limegreen', 50, 50, 'slimeball', slimeImage)
 const slimeballs = (Pawns.type === 'slimeball')
+// cheese
+let cheeseOne = new Pawns(265, 5, 'yellow', 30, 30, 'snack', cheeseImage)
+let cheeseTwo = new Pawns(415, 5, 'yellow', 40, 40, 'snack', cheeseImage)
+let cheeseThree = new Pawns(575, 5, 'yellow', 50, 50, 'snack', cheeseImage)
+let cheeseFour = new Pawns(710, 5, 'yellow', 60, 60, 'snack', cheeseImage)
 
 // GAME FUNCTIONS
 
@@ -146,6 +153,11 @@ function animate() {
         slimeballFour.update()
     // slimeballFive.update()
     // slimeballSix.update()
+    // cheese update
+        cheeseOne.update()
+        cheeseTwo.update()
+        cheeseThree.update()
+        cheeseFour.update()
 // if statement for rat movement
             if (keys.right.pressed && mrRat.x < 800) {
             mrRat.velocity.x = 2.7
@@ -250,6 +262,10 @@ function refresh() {
     slimeballTwo = new Pawns(350, -10, 'limegreen', 40, 50, 'slimeball', slimeImage)
     slimeballThree = new Pawns(500, 5, 'limegreen', 40, 50, 'slimeball', slimeImage)
     slimeballFour = new Pawns(650, -10, 'limegreen', 40, 50, 'slimeball', slimeImage)
+    cheeseOne = new Pawns(265, 5, 'yellow', 30, 30, 'snack', cheeseImage)
+    cheeseTwo = new Pawns(415, 5, 'yellow', 40, 40, 'snack', cheeseImage)
+    cheeseThree = new Pawns(575, 5, 'yellow', 50, 50, 'snack', cheeseImage)
+    cheeseFour = new Pawns(710, 5, 'yellow', 60, 60, 'snack', cheeseImage)
     gameStatusElement.classList.remove('show')
     animate()
 }
